@@ -19,6 +19,7 @@ public class Attack
     #region Force Data
     [field: SerializeField] public float Force {get;private set;} = 15.0f;
     [field: SerializeField] public float ForceTime {get; private set;} = .35f;
+    [field:SerializeField] public float Knockback {get; private set; } = 10.0f;
     #endregion
 
 

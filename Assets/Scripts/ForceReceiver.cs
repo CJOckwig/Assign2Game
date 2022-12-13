@@ -29,6 +29,10 @@ public class ForceReceiver : MonoBehaviour
             _verticalVelocity+=Physics.gravity.y * _gravityModifier * Time.deltaTime;
         }
         _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, _drag);
+        if(_impact.sqrMagnitude < .2f * .2f)
+        {
+            _impact = Vector3.zero;
+        }
     }
 
     public virtual void AddForce(Vector3 force)

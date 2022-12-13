@@ -23,12 +23,15 @@ protected const float CrossFadeDuration = 1.0f;
     protected bool IsInChaseRange()
     {
         if(_stateMachine.Player == null){return false;}
+        if(_stateMachine.GetComponent<Health>().IsDead()){return false;}
         float distanceToPlayer = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
         return distanceToPlayer <= _stateMachine.PlayerChaseRange * _stateMachine.PlayerChaseRange;
     }
     protected bool IsInAttackRange()
     {
         if(_stateMachine.Player == null){return false;}
+                if(_stateMachine.Player == null){return false;}
+
         float distanceToPlayer = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
         return distanceToPlayer <= _stateMachine.PlayerAttackRange * _stateMachine.PlayerAttackRange;
     }

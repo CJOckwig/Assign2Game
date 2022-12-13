@@ -9,9 +9,7 @@ public class EnemyIdleState : EnemyBaseState
     [SerializeField] float _idleWaitTime = 2.0f;
     float _idleTimer = 0.0f;
 
-    public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine)
-    {
-    }
+    public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine){    }
 
     public override void Enter()
     {
@@ -31,9 +29,11 @@ public class EnemyIdleState : EnemyBaseState
         {
             if(IsInChaseRange())
             {
+                _stateMachine.SwitchState(new EnemyChasingState(_stateMachine));
                 return;
             }else
             {
+                _stateMachine.SwitchState(new EnemyPatrollingState(_stateMachine));
                 return;
             }
         }else 
@@ -43,14 +43,4 @@ public class EnemyIdleState : EnemyBaseState
         }
     }
     #endregion
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
